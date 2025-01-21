@@ -14,6 +14,9 @@ java.sourceSets["main"].java {
 }
 
 dependencies {
+    // Add jar files to compile java code
+    implementation(files("iterati/MrYoungIterati.jar"))
+
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 }
