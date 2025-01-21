@@ -16,11 +16,11 @@ public interface BinarySearchTree<T extends Comparable<? super T>> {
      * runs in O(size) time. However, if this {@link BinarySearchTree} is
      * balanced, this method runs in O(log(size)) time.
      * A successful call to this method will always result in size increasing by one.
-     * For simplicity, you can suppose that a duplicate value being added to the tree
-     * should head to the left, that is, the right child will have a strictly greater
-     * value, and the left child will have a less-than-or-equal-to value in any node
-     * of the BST (which is consistent with the <code>isBST</code> test in the
-     * <code>BinaryTreeUtility</code> class from Part 1).
+     * For simplicity, you can suppose that a duplicate value being added to the
+     * tree should head to the right, that is, the left child will have a strictly
+     * lesser value, and the right child will have a greater-than-or-equal-to value
+     * in any node of the BST (consistent with the <code>isBST</code> method in the
+     * <code>BinaryTreeUtility</code> class).
      *
      * @param toAdd the element to add to this {@link BinarySearchTree}
      * @return For convenience, this method returns the modified
@@ -49,7 +49,8 @@ public interface BinarySearchTree<T extends Comparable<? super T>> {
      * 0). Returns {@code true} if this {@link BinarySearchTree} was modified
      * and {@code false} otherwise. This method runs in O(size) time. However,
      * if this {@link BinarySearchTree} is balanced, this method runs in
-     * O(log(size)) time.
+     * O(log(size)) time. If there is more than one copy of {@code toRemove}
+     * in the tree, only one copy of the node should be removed.
      *
      * @param toRemove the element to be removed
      * @return {@code true} if this {@link BinarySearchTree} was modified and

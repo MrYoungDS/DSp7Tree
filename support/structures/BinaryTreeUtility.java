@@ -1,7 +1,5 @@
 package structures;
 
-import java.util.Iterator;
-
 /**
  * A {@link BinaryTreeUtility} provides utility methods for a {@link BinaryTreeNode}
  * @author jcollard jddevaug
@@ -59,9 +57,9 @@ public interface BinaryTreeUtility {
 	 * A {@link BinaryTreeNode} is said to be a Binary Search Tree if all of the
 	 * following properties are true:
 	 * <li>The left subtree of a node contains only nodes with values less than
-	 * or equal to the value stored in {@code root}.</li>
+	 * the value stored in {@code root}.</li>
 	 * <li>The right subtree of a node contains only nodes with values that are
-	 * greater than the value stored in {@code root}.</li>
+	 * greater than or equal to the value stored in {@code root}.</li>
 	 * <li>The left and right subtree each must also be a binary search tree.</li>
 	 * </p>
 	 * <p>
@@ -75,6 +73,5 @@ public interface BinaryTreeUtility {
 	 * @throws NullPointerException
 	 *             if {@code root} is {@code null}
 	 */
-	<T extends Comparable<? super T>> boolean isBST(
-			BinaryTreeNode<T> root);
+	<T extends Comparable<? super T>> boolean isBST(BinaryTreeNode<T> root);
 }

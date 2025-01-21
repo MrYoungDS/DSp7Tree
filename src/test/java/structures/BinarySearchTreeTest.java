@@ -30,7 +30,7 @@ public class BinarySearchTreeTest {
     }
 
     @Test
-    public void testSimpleAddSizeAndIsEmpty(){
+    public void testSimpleAddSizeAndIsEmpty() {
         assertTrue(tree.isEmpty(), "Fresh tree should be empty.");
         assertEquals(0, tree.size(), "Fresh tree should have size 0.");
         assertEquals(tree, tree.add(1), "Add should return tree for convenience.");
@@ -78,13 +78,13 @@ public class BinarySearchTreeTest {
     }
 
     @Test
-    public void testAddNullPointer(){
+    public void testAddNullPointer() {
         assertThrows(NullPointerException.class,
                 () -> tree.add(null));
     }
 
     @Test
-    public void testContainsNullPointer(){
+    public void testContainsNullPointer() {
         assertThrows(NullPointerException.class,
                 () -> tree.contains(null));
     }
@@ -94,9 +94,9 @@ public class BinarySearchTreeTest {
         // just the root
         tree.add(5);
 
-        inItr = new InorderIterator<>(tree.getRoot());
+        inItr = new MrYoungInorder<>(tree.getRoot());
         assertIteratorContains(inItr, 5);
-        preItr = new PreorderIterator<>(tree.getRoot());
+        preItr = new MrYoungPreorder<>(tree.getRoot());
         assertIteratorContains(preItr, 5);
 
         assertEquals(1, tree.size());
@@ -108,23 +108,23 @@ public class BinarySearchTreeTest {
     public void testAddRemoveLevel1() {
         // add method should return the tree
         tree.add(5).add(2).add(7);
-        inItr = new InorderIterator<>(tree.getRoot());
+        inItr = new MrYoungInorder<>(tree.getRoot());
         assertIteratorContains(inItr, 2, 5, 7);
-        preItr = new PreorderIterator<>(tree.getRoot());
+        preItr = new MrYoungPreorder<>(tree.getRoot());
         assertIteratorContains(preItr, 5, 2, 7);
         assertEquals(3, tree.size());
 
         assertTrue(tree.remove(2));
-        inItr = new InorderIterator<>(tree.getRoot());
+        inItr = new MrYoungInorder<>(tree.getRoot());
         assertIteratorContains(inItr, 5, 7);
-        preItr = new PreorderIterator<>(tree.getRoot());
+        preItr = new MrYoungPreorder<>(tree.getRoot());
         assertIteratorContains(preItr, 5, 7);
         assertEquals(2, tree.size());
 
         assertTrue(tree.remove(7));
-        inItr = new InorderIterator<>(tree.getRoot());
+        inItr = new MrYoungInorder<>(tree.getRoot());
         assertIteratorContains(inItr, 5);
-        preItr = new PreorderIterator<>(tree.getRoot());
+        preItr = new MrYoungPreorder<>(tree.getRoot());
         assertIteratorContains(preItr, 5);
         assertEquals(1, tree.size());
 
@@ -136,30 +136,30 @@ public class BinarySearchTreeTest {
     public void testAddRemoveLevel2() {
         // add method should return the tree
         tree.add(5).add(2).add(7).add(6).add(4).add(3);
-        inItr = new InorderIterator<>(tree.getRoot());
+        inItr = new MrYoungInorder<>(tree.getRoot());
         assertIteratorContains(inItr, 2, 3, 4, 5, 6, 7);
-        preItr = new PreorderIterator<>(tree.getRoot());
+        preItr = new MrYoungPreorder<>(tree.getRoot());
         assertIteratorContains(preItr, 5, 2, 4, 3, 7, 6);
         assertEquals(6, tree.size());
 
         assertTrue(tree.remove(7));
-        inItr = new InorderIterator<>(tree.getRoot());
+        inItr = new MrYoungInorder<>(tree.getRoot());
         assertIteratorContains(inItr, 2, 3, 4, 5, 6);
-        preItr = new PreorderIterator<>(tree.getRoot());
+        preItr = new MrYoungPreorder<>(tree.getRoot());
         assertIteratorContains(preItr, 5, 2, 4, 3, 6);
         assertEquals(5, tree.size());
 
         assertTrue(tree.remove(4));
-        inItr = new InorderIterator<>(tree.getRoot());
+        inItr = new MrYoungInorder<>(tree.getRoot());
         assertIteratorContains(inItr, 2, 3, 5, 6);
-        preItr = new PreorderIterator<>(tree.getRoot());
+        preItr = new MrYoungPreorder<>(tree.getRoot());
         assertIteratorContains(preItr, 5, 2, 3, 6);
         assertEquals(4, tree.size());
 
         assertTrue(tree.remove(2));
-        inItr = new InorderIterator<>(tree.getRoot());
+        inItr = new MrYoungInorder<>(tree.getRoot());
         assertIteratorContains(inItr, 3, 5, 6);
-        preItr = new PreorderIterator<>(tree.getRoot());
+        preItr = new MrYoungPreorder<>(tree.getRoot());
         assertIteratorContains(preItr, 5, 3, 6);
         assertEquals(3, tree.size());
     }
@@ -169,30 +169,30 @@ public class BinarySearchTreeTest {
         // full tree with 15 elements
         tree.add(8).add(4).add(2).add(1).add(3).add(6).add(5).add(7);
         tree.add(12).add(10).add(9).add(11).add(14).add(13).add(15);
-        inItr = new InorderIterator<>(tree.getRoot());
+        inItr = new MrYoungInorder<>(tree.getRoot());
         assertIteratorContains(inItr, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
-        preItr = new PreorderIterator<>(tree.getRoot());
+        preItr = new MrYoungPreorder<>(tree.getRoot());
         assertIteratorContains(preItr, 8, 4, 2, 1, 3, 6, 5, 7, 12, 10, 9, 11, 14, 13, 15);
         assertEquals(15, tree.size());
 
         assertTrue(tree.remove(2));
-        inItr = new InorderIterator<>(tree.getRoot());
+        inItr = new MrYoungInorder<>(tree.getRoot());
         assertIteratorContains(inItr, 1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
-        preItr = new PreorderIterator<>(tree.getRoot());
+        preItr = new MrYoungPreorder<>(tree.getRoot());
         assertIteratorContains(preItr, 8, 4, 3, 1, 6, 5, 7, 12, 10, 9, 11, 14, 13, 15);
         assertEquals(14, tree.size());
 
         assertTrue(tree.remove(4));
-        inItr = new InorderIterator<>(tree.getRoot());
+        inItr = new MrYoungInorder<>(tree.getRoot());
         assertIteratorContains(inItr, 1, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
-        preItr = new PreorderIterator<>(tree.getRoot());
+        preItr = new MrYoungPreorder<>(tree.getRoot());
         assertIteratorContains(preItr, 8, 5, 3, 1, 6, 7, 12, 10, 9, 11, 14, 13, 15);
         assertEquals(13, tree.size());
 
         assertTrue(tree.remove(12));
-        inItr = new InorderIterator<>(tree.getRoot());
+        inItr = new MrYoungInorder<>(tree.getRoot());
         assertIteratorContains(inItr, 1, 3, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15);
-        preItr = new PreorderIterator<>(tree.getRoot());
+        preItr = new MrYoungPreorder<>(tree.getRoot());
         assertIteratorContains(preItr, 8, 5, 3, 1, 6, 7, 13, 10, 9, 11, 14, 15);
         assertEquals(12, tree.size());
     }
@@ -200,39 +200,39 @@ public class BinarySearchTreeTest {
     @Test
     public void testAddRemoveRoot() {
         tree.add(43).add(24).add(5).add(28).add(26).add(52).add(47).add(60);
-        inItr = new InorderIterator<>(tree.getRoot());
+        inItr = new MrYoungInorder<>(tree.getRoot());
         assertIteratorContains(inItr, 5, 24, 26, 28, 43, 47, 52, 60);
-        preItr = new PreorderIterator<>(tree.getRoot());
+        preItr = new MrYoungPreorder<>(tree.getRoot());
         assertIteratorContains(preItr, 43, 24, 5, 28, 26, 52, 47, 60);
         assertEquals(8, tree.size());
 
         assertTrue(tree.remove(43));
-        inItr = new InorderIterator<>(tree.getRoot());
+        inItr = new MrYoungInorder<>(tree.getRoot());
         assertIteratorContains(inItr, 5, 24, 26, 28, 47, 52, 60);
-        preItr = new PreorderIterator<>(tree.getRoot());
+        preItr = new MrYoungPreorder<>(tree.getRoot());
         assertIteratorContains(preItr, 47, 24, 5, 28, 26, 52, 60);
         assertEquals(7, tree.size());
 
         assertTrue(tree.remove(47));
-        inItr = new InorderIterator<>(tree.getRoot());
+        inItr = new MrYoungInorder<>(tree.getRoot());
         assertIteratorContains(inItr, 5, 24, 26, 28, 52, 60);
-        preItr = new PreorderIterator<>(tree.getRoot());
+        preItr = new MrYoungPreorder<>(tree.getRoot());
         assertIteratorContains(preItr, 52, 24, 5, 28, 26, 60);
         assertEquals(6, tree.size());
 
         assertTrue(tree.remove(52));
         assertTrue(tree.remove(60));
-        inItr = new InorderIterator<>(tree.getRoot());
+        inItr = new MrYoungInorder<>(tree.getRoot());
         assertIteratorContains(inItr, 5, 24, 26, 28);
-        preItr = new PreorderIterator<>(tree.getRoot());
+        preItr = new MrYoungPreorder<>(tree.getRoot());
         assertIteratorContains(preItr, 24, 5, 28, 26);
         assertEquals(4, tree.size());
 
         assertTrue(tree.remove(24));
         assertTrue(tree.remove(26));
-        inItr = new InorderIterator<>(tree.getRoot());
+        inItr = new MrYoungInorder<>(tree.getRoot());
         assertIteratorContains(inItr, 5, 28);
-        preItr = new PreorderIterator<>(tree.getRoot());
+        preItr = new MrYoungPreorder<>(tree.getRoot());
         assertIteratorContains(preItr, 28, 5);
         assertEquals(2, tree.size());
     }
@@ -240,69 +240,69 @@ public class BinarySearchTreeTest {
     @Test
     public void testAddRemoveDuplicates() {
         tree.add(20).add(20).add(20).add(10).add(10).add(5);
-        inItr = new InorderIterator<>(tree.getRoot());
+        inItr = new MrYoungInorder<>(tree.getRoot());
         assertIteratorContains(inItr, 5, 10, 10, 20, 20, 20);
-        preItr = new PreorderIterator<>(tree.getRoot());
+        preItr = new MrYoungPreorder<>(tree.getRoot());
         assertIteratorContains(preItr, 20, 20, 20, 10, 10, 5);
 
         assertTrue(tree.remove(20));
-        inItr = new InorderIterator<>(tree.getRoot());
+        inItr = new MrYoungInorder<>(tree.getRoot());
         assertIteratorContains(inItr, 5, 10, 10, 20, 20);
-        preItr = new PreorderIterator<>(tree.getRoot());
+        preItr = new MrYoungPreorder<>(tree.getRoot());
         assertIteratorContains(preItr, 20, 20, 10, 10, 5);
 
         assertTrue(tree.remove(20));
-        inItr = new InorderIterator<>(tree.getRoot());
+        inItr = new MrYoungInorder<>(tree.getRoot());
         assertIteratorContains(inItr, 5, 10, 10, 20);
-        preItr = new PreorderIterator<>(tree.getRoot());
+        preItr = new MrYoungPreorder<>(tree.getRoot());
         assertIteratorContains(preItr, 20, 10, 10, 5);
 
         assertTrue(tree.remove(20));
-        inItr = new InorderIterator<>(tree.getRoot());
+        inItr = new MrYoungInorder<>(tree.getRoot());
         assertIteratorContains(inItr, 5, 10, 10);
-        preItr = new PreorderIterator<>(tree.getRoot());
+        preItr = new MrYoungPreorder<>(tree.getRoot());
         assertIteratorContains(preItr, 10, 10, 5);
 
         assertFalse(tree.remove(20));
         assertTrue(tree.remove(10));
-        inItr = new InorderIterator<>(tree.getRoot());
+        inItr = new MrYoungInorder<>(tree.getRoot());
         assertIteratorContains(inItr, 5, 10);
-        preItr = new PreorderIterator<>(tree.getRoot());
+        preItr = new MrYoungPreorder<>(tree.getRoot());
         assertIteratorContains(preItr, 10, 5);
 
         assertTrue(tree.remove(10));
         assertFalse(tree.remove(10));
-        inItr = new InorderIterator<>(tree.getRoot());
+        inItr = new MrYoungInorder<>(tree.getRoot());
         assertIteratorContains(inItr, 5);
-        preItr = new PreorderIterator<>(tree.getRoot());
+        preItr = new MrYoungPreorder<>(tree.getRoot());
         assertIteratorContains(preItr, 5);
     }
 
     @Test
     public void testAddRemoveDuplicates2() {
         tree.add(8).add(20).add(7).add(12).add(7).add(10).add(12);
-        inItr = new InorderIterator<>(tree.getRoot());
+        inItr = new MrYoungInorder<>(tree.getRoot());
         assertIteratorContains(inItr, 7, 7, 8, 10, 12, 12, 20);
-        preItr = new PreorderIterator<>(tree.getRoot());
+        preItr = new MrYoungPreorder<>(tree.getRoot());
         assertIteratorContains(preItr, 8, 7, 7, 20, 12, 10, 12);
 
         assertTrue(tree.remove(8));
-        inItr = new InorderIterator<>(tree.getRoot());
+        inItr = new MrYoungInorder<>(tree.getRoot());
         assertIteratorContains(inItr, 7, 7, 10, 12, 12, 20);
-        preItr = new PreorderIterator<>(tree.getRoot());
+        preItr = new MrYoungPreorder<>(tree.getRoot());
         assertIteratorContains(preItr, 10, 7, 7, 20, 12, 12);
 
         assertTrue(tree.remove(7));
         assertTrue(tree.remove(20));
-        inItr = new InorderIterator<>(tree.getRoot());
+        inItr = new MrYoungInorder<>(tree.getRoot());
         assertIteratorContains(inItr, 7, 10, 12, 12);
-        preItr = new PreorderIterator<>(tree.getRoot());
+        preItr = new MrYoungPreorder<>(tree.getRoot());
         assertIteratorContains(preItr, 10, 7, 12, 12);
 
         assertTrue(tree.remove(10));
-        inItr = new InorderIterator<>(tree.getRoot());
+        inItr = new MrYoungInorder<>(tree.getRoot());
         assertIteratorContains(inItr, 7, 12, 12);
-        preItr = new PreorderIterator<>(tree.getRoot());
+        preItr = new MrYoungPreorder<>(tree.getRoot());
         assertIteratorContains(preItr, 12, 7, 12);
     }
 
@@ -333,7 +333,7 @@ public class BinarySearchTreeTest {
         //Random r = new Random(48); // if you want a seed
         List<Integer> valuesAdded = new LinkedList<>();
 
-        for(int i = 0; i < SPEED_TEST; i++){
+        for(int i = 0; i < SPEED_TEST; i++) {
             assertEquals(i, tree.size(), "Tree should have i elements in it.");
             int next = r.nextInt(3 * SPEED_TEST); // should get some repeats
             valuesAdded.add(next);
@@ -343,7 +343,7 @@ public class BinarySearchTreeTest {
         assertEquals(SPEED_TEST, tree.size());
 
         // remove the values in random order
-        for(int i = 0; i < SPEED_TEST; i++){
+        for(int i = 0; i < SPEED_TEST; i++) {
             int index = r.nextInt(valuesAdded.size());
             int value = valuesAdded.get(index);
             assertTrue(tree.remove(value), "Could not remove previously added node.");
@@ -354,7 +354,7 @@ public class BinarySearchTreeTest {
     }
 
     @Test
-    public void testSimpleGetMinAndGetMax(){
+    public void testSimpleGetMinAndGetMax() {
         tree.add(4).add(2).add(1).add(3).add(5).add(6).add(7);
         assertEquals(Integer.valueOf(1), tree.getMinimum());
         assertEquals(Integer.valueOf(7), tree.getMaximum());
@@ -367,7 +367,7 @@ public class BinarySearchTreeTest {
         LinkedList<Integer> values = new LinkedList<>();
         int currentMin = Integer.MAX_VALUE;
         int currentMax = Integer.MIN_VALUE;
-        for(int i = 0; i < SPEED_TEST; i++){
+        for(int i = 0; i < SPEED_TEST; i++) {
             int next = r.nextInt();
             currentMin = Math.min(currentMin, next);
             currentMax = Math.max(currentMax, next);
@@ -380,85 +380,20 @@ public class BinarySearchTreeTest {
     }
 
     @Test
-    public void testIllegalStateGetMin(){
+    public void testIllegalStateGetMin() {
         assertThrows(IllegalStateException.class,
                 () -> tree.getMinimum());
     }
 
     @Test
-    public void testIllegalStateGetMax(){
+    public void testIllegalStateGetMax() {
         assertThrows(IllegalStateException.class,
                 () -> tree.getMaximum());
     }
 
-    public static class InorderIterator<T> implements Iterator<T> {
-
-        private final Deque<BinaryTreeNode<T>> stack;
-
-        public InorderIterator(BinaryTreeNode<T> root) {
-            if (root == null) {
-                throw new NullPointerException();
-            }
-            stack = new LinkedList<>();
-            stack.push(root);
-            BinaryTreeNode<T> current = root;
-            while (current.hasLeftChild()) {
-                current = current.getLeftChild();
-                stack.push(current);
-            }
-        }
-
-        @Override
-        public boolean hasNext() { return !stack.isEmpty(); }
-
-        @Override
-        public T next() {
-            BinaryTreeNode<T> toVisit = stack.pop();
-            if(toVisit.hasRightChild()) {
-                BinaryTreeNode<T> current = toVisit.getRightChild();
-                stack.push(current);
-                while (current.hasLeftChild()) {
-                    current = current.getLeftChild();
-                    stack.push(current);
-                }
-            }
-            return toVisit.getData();
-        }
-
-        @Override
-        public void remove() { throw new UnsupportedOperationException(); }
-    }
-
-    public static class PreorderIterator<T> implements Iterator<T> {
-
-        private final Deque<BinaryTreeNode<T>> stack;
-
-        public PreorderIterator(BinaryTreeNode<T> root){
-            if (root == null) {
-                throw new NullPointerException();
-            }
-            stack = new LinkedList<>();
-            stack.push(root);
-        }
-
-        @Override
-        public boolean hasNext() { return !stack.isEmpty(); }
-
-        @Override
-        public T next() {
-            BinaryTreeNode<T> toVisit = stack.pop();
-            if(toVisit.hasRightChild()) stack.push(toVisit.getRightChild());
-            if(toVisit.hasLeftChild()) stack.push(toVisit.getLeftChild());
-            return toVisit.getData();
-        }
-
-        @Override
-        public void remove() { throw new UnsupportedOperationException(); }
-    }
-
-    private void assertIteratorContains(Iterator<Integer> itr, Integer ... elements){
+    private void assertIteratorContains(Iterator<Integer> itr, Integer ... elements) {
         List<Integer> found = new LinkedList<>();
-        for(Integer e : elements){
+        for(Integer e : elements) {
             assertTrue(itr.hasNext(),
                     "Expected iterator to produce " + Arrays.toString(elements) + " but produced " + found);
             Integer test = itr.next();

@@ -101,9 +101,9 @@ public class BinaryTreeNodeTest {
 
 	@Test
 	public void testRoot1() {
-		assertEquals(Integer.valueOf(5), root1.getData(), "Root should have a single node with 5 stored.");
-		assertFalse(root1.hasLeftChild(), "Root should have no children.");
-		assertFalse(root1.hasRightChild(), "Root should have no children.");
+		assertEquals(Integer.valueOf(5), root1.getData(), "Root 1 should have a single node with 5 stored.");
+		assertFalse(root1.hasLeftChild(), "Root 1 should have no children.");
+		assertFalse(root1.hasRightChild(), "Root 1 should have no children.");
 	}
 	
 	@Test
@@ -120,12 +120,12 @@ public class BinaryTreeNodeTest {
 	
 	@Test
 	public void testRoot2() {
-		assertEquals(Integer.valueOf(5), root2.getData(), "The root of root2 should hold 5.");
+		assertEquals(Integer.valueOf(5), root2.getData(), "The root of root 2 should hold 5.");
 		assertFalse(root2.hasLeftChild(), "Root 2 should have only a right child.");
 		assertTrue(root2.hasRightChild(), "Root 2 should have a right child.");
-		assertEquals(Integer.valueOf(7), root2.getRightChild().getData(), "The right child of root2 should hold 7.");
-		assertFalse(root2.getRightChild().hasRightChild(), "The right child of root2 should have no children.");
-		assertFalse(root2.getRightChild().hasLeftChild(), "The left child of root2 should have no children.");
+		assertEquals(Integer.valueOf(7), root2.getRightChild().getData(), "The right child of root 2 should hold 7.");
+		assertFalse(root2.getRightChild().hasRightChild(), "The right child of root 2 should have no children.");
+		assertFalse(root2.getRightChild().hasLeftChild(), "The left child of root 2 should have no children.");
 	}
 	
 	@Test
@@ -155,13 +155,13 @@ public class BinaryTreeNodeTest {
 		//           6   7     1
 		//                    /
 		//                   4
-		assertEquals(Integer.valueOf(5), root3.getData(), "The root of root3 should hold 5.");
-		assertEquals(Integer.valueOf(3), root3.getLeftChild().getData(), "The left child of root3 should hold 3.");
-		assertEquals(Integer.valueOf(6), root3.getLeftChild().getLeftChild().getData(), "The left-left child of root3 should hold 6.");
-		assertEquals(Integer.valueOf(7), root3.getLeftChild().getRightChild().getData(), "The left-right child of root3 should hold 7.");
-		assertEquals(Integer.valueOf(19), root3.getRightChild().getData(), "The right child of root3 should hold 19.");
-		assertEquals(Integer.valueOf(1), root3.getRightChild().getLeftChild().getData(), "The right-left child of root3 should hold 1.");
-		assertEquals(Integer.valueOf(4), root3.getRightChild().getLeftChild().getLeftChild().getData(), "The right-left-left child of root3 should hold 4.");
+		assertEquals(Integer.valueOf(5), root3.getData(), "The root of root 3 should hold 5.");
+		assertEquals(Integer.valueOf(3), root3.getLeftChild().getData(), "The left child of root 3 should hold 3.");
+		assertEquals(Integer.valueOf(6), root3.getLeftChild().getLeftChild().getData(), "The left-left child of root 3 should hold 6.");
+		assertEquals(Integer.valueOf(7), root3.getLeftChild().getRightChild().getData(), "The left-right child of root 3 should hold 7.");
+		assertEquals(Integer.valueOf(19), root3.getRightChild().getData(), "The right child of root 3 should hold 19.");
+		assertEquals(Integer.valueOf(1), root3.getRightChild().getLeftChild().getData(), "The right-left child of root 3 should hold 1.");
+		assertEquals(Integer.valueOf(4), root3.getRightChild().getLeftChild().getLeftChild().getData(), "The right-left-left child of root 3 should hold 4.");
 	}
 	
 	@Test
